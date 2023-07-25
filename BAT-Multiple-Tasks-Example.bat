@@ -54,5 +54,21 @@ del message.vbs
 ::Task 15: Delete a file from a share drive
 DEL /F/Q \\sharedrive\folder\subfolder\file.txt
 
+::Task 16: Get variable from a daily file then curl data to an API
+set "MM=%date:~4,2%"
+set "DD=%date:~7,2%"
+set "YYYY=%date:~10,4%" 
+
+set "datestamp=%MM%%DD%%YYYY%"
+
+set /p data=<X:\folder\filename_%datestamp%.txt
+set data2 = XYZ
+
+curl -H "Content-Type: application/json" -X POST https://website.com/data/files -d "{\"datefield\":\"%datestamp%\", \"datafield1\":\"%data1%\", \"datafield2\":\"%data2%\", \"datafield3\":\"alwaysTheSame\"}"
+
+::Task 17: Curl data to an API only on a specific day of the week
+if %date:~0,3%==Wed (curl -H "Content-Type: application/json" -X POST https://website.com/data/files -d "{\"timestamp\":\"%time%\", \"data1\":\"X\", \"data2\":\"Y\")
+
+
 echo All tasks completed.
 pause
