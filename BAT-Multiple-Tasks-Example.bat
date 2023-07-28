@@ -61,7 +61,7 @@ set "YYYY=%date:~10,4%"
 
 set "datestamp=%MM%%DD%%YYYY%"
 
-set /p data=<X:\folder\filename_%datestamp%.txt
+set /p data1=<X:\folder\filename_%datestamp%.txt
 set data2 = XYZ
 
 curl -H "Content-Type: application/json" -X POST https://website.com/data/files -d "{\"datefield\":\"%datestamp%\", \"datafield1\":\"%data1%\", \"datafield2\":\"%data2%\", \"datafield3\":\"alwaysTheSame\"}"
